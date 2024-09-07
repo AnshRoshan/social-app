@@ -1,4 +1,4 @@
-import { Models } from "appwrite";
+import type { Models } from "appwrite";
 import { useState, useEffect } from 'react';
 import { useLocation } from "react-router-dom";
 
@@ -73,8 +73,8 @@ const PostStats = ({ post, userId }: PostStatsProps) => {
 
   return (
     <div 
-        className={`flex justify-between items-center z-20 ${containerStyles}`}>
-        <div className="flex gap-2 mr-5">
+        className={`z-20 flex items-center justify-between ${containerStyles}`}>
+        <div className="mr-5 flex gap-2">
             <img
                 src={`${
                     checkIsLiked(likes, userId)

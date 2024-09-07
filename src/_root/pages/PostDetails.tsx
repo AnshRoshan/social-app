@@ -35,7 +35,7 @@ const PostDetails = () => {
 
   return (
     <div className='post_details-container'>
-      <div className='hidden md:flex max-w-5xl w-full'>
+      <div className="hidden w-full max-w-5xl md:flex">
       <Button
           onClick={() => navigate(-1)}
           variant="ghost"
@@ -61,7 +61,7 @@ const PostDetails = () => {
           />
 
             <div className='post_details-info'>
-              <div className='flex-between w-full'>
+              <div className="w-full flex-between">
                 <Link
                   to={`/profile/${post?.creator.$id}`}
                   className='flex items-center gap-3'>
@@ -71,9 +71,9 @@ const PostDetails = () => {
                       '/assets/icons/profile-placeholder.svg'
                     }
                     alt="creator"
-                    className="rounded-full w-8 h-8 lg:w-12 lg:h-12"
+                    className="h-8 w-8 rounded-full lg:h-12 lg:w-12"
                   />
-                <div className="flex gap-1 flex-col">
+                <div className="flex flex-col gap-1">
                   <p className="base-medium lg:body-bold text-light-1">
                     {post?.creator.name}
                   </p>
@@ -117,11 +117,11 @@ const PostDetails = () => {
                 </div>
               </div>
 
-              <hr className='border w-full border-dark-4/80' />
+              <hr className="w-full border border-dark-4/80" />
 
-              <div className="flex flex-col flex-1 w-full small-medium lg:base-regular">
+              <div className="small-medium lg:base-regular flex w-full flex-1 flex-col">
                 <p>{post?.caption}</p>
-                <ul className="flex gap-1 mt-2">
+                <ul className="mt-2 flex gap-1">
                     {post?.tags.map((tag: string) => (
                         <li
                           key={tag}
@@ -140,9 +140,9 @@ const PostDetails = () => {
       )}
 
       <div className="w-full max-w-5xl">
-        <hr className="border w-full border-dark-4/80" />
+        <hr className="w-full border border-dark-4/80" />
 
-        <h3 className="body-bold md:h3-bold w-full my-10">
+        <h3 className="body-bold md:h3-bold my-10 w-full">
           More Related Posts
         </h3>
         {isUserPostLoading || !relatedPosts ? (

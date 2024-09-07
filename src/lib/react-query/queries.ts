@@ -21,7 +21,7 @@ import {
   updateUser,
 } from '@/lib/appwrite/api'
 import { QUERY_KEYS } from '@/lib/react-query/queryKeys'
-import { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'
+import type { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'
 
 // ============================================================
 // AUTH QUERIES
@@ -94,7 +94,7 @@ export const useCreatePost = () => {
   })
 }
 
-export const useGetPostById = (postId: string = '') => {
+export const useGetPostById = (postId = '') => {
   return useQuery({
     queryKey: [QUERY_KEYS.GET_POST_BY_ID, postId],
     queryFn: () => getPostById(postId),

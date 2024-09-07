@@ -1,4 +1,4 @@
-import { Models } from "appwrite";
+import type { Models } from "appwrite";
 
 import Loader from "@/components/shared/Loader";
 import PostCard from "@/components/shared/PostCard";
@@ -35,13 +35,13 @@ const Home = () => {
     <div className="flex flex-1">
       <div className="home-container">
         <div className="home-posts">
-          <h2 className="h3-bold md:h2-bold text-left w-full">Home Feed</h2>
+          <h2 className="h3-bold md:h2-bold w-full text-left">Home Feed</h2>
           {isPostLoading && !posts ? (
             <Loader />
           ) : (
-            <ul className="flex flex-col flex-1 gap-9 w-full">
+            <ul className="flex w-full flex-1 flex-col gap-9">
               {posts?.documents.map((post: Models.Document) => (
-                <li key={post.$id} className="flex justify-center w-full">
+                <li key={post.$id} className="flex w-full justify-center">
                   <PostCard post={post} />
                 </li>
               ))}
@@ -55,7 +55,7 @@ const Home = () => {
         {isUserLoading && !creators ? (
           <Loader />
         ) : (
-          <ul className="grid 2xl:grid-cols-2 gap-6">
+          <ul className="grid gap-6 2xl:grid-cols-2">
             {creators?.documents.map((creator) => (
               <li key={creator?.$id}>
                 <UserCard user={creator} />

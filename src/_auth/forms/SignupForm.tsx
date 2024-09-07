@@ -1,5 +1,5 @@
-import * as z from 'zod'
-import { useForm, Control } from 'react-hook-form'
+import type * as z from 'zod'
+import { useForm, type Control } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -99,17 +99,17 @@ const SignupForm = () => {
 
   return (
     <Form {...form}>
-      <div className='sm:w-420 flex-center flex-col'>
+      <div className="flex-center flex-col sm:w-420">
         <img src='/assets/images/logo.svg' alt='logo' />
 
         <h2 className='h3-bold md:h2-bold pt-5 sm:pt-12'>Create a new account.</h2>
-        <p className='text-light-3 small-medium md:base-regular mt-2'>
+        <p className="small-medium md:base-regular mt-2 text-light-3">
           To use Snapgram, please enter your details.
         </p>
 
         <form
           onSubmit={form.handleSubmit(handleSignup)}
-          className='flex flex-col gap-5 w-full mt-4'
+          className="mt-4 flex w-full flex-col gap-5"
         >
           <FormFieldComponent control={form.control} name='name' label='Name' type='text' />
           <FormFieldComponent control={form.control} name='username' label='Username' type='text' />
@@ -131,11 +131,11 @@ const SignupForm = () => {
             )}
           </Button>
 
-          <p className='text-small-regular text-light-2 text-center mt-2'>
+          <p className="mt-2 text-center text-light-2 text-small-regular">
             Already have an account?
             <Link
               to='/sign-in'
-              className='text-primary-500 text-small-semibold ml-1 hover:underline hover:text-primary-600 hover:underline-offset-2'
+              className="ml-1 text-primary-500 text-small-semibold hover:text-primary-600 hover:underline hover:underline-offset-2"
             >
               Log in
             </Link>

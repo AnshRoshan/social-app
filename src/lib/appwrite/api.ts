@@ -1,6 +1,6 @@
-import { ID, Query } from 'appwrite'
+import { ID, ImageGravity, Query } from 'appwrite'
 
-import { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'
+import type { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'
 import { account, appwriteConfig, avatars, databases, storage } from './config'
 
 //
@@ -56,13 +56,14 @@ export async function saveUserToDB(user: {
 // SIGN IN
 export async function signInAccount(user: { email: string; password: string }) {
   try {
-    const session = await account.createEmailSession(user.email, user.password)
+    const session = await account.createEmailPasswordSession(user.email, user.password);
 
-    return session
+    return session;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
+
 
 // GET ACCOUNT
 export async function getAccount() {
@@ -168,7 +169,7 @@ export async function uploadFile(file: File) {
 // GET FILE URL
 export function getFilePreview(fileId: string) {
   try {
-    const fileUrl = storage.getFilePreview(appwriteConfig.storageId, fileId, 2000, 2000, 'top', 100)
+    const fileUrl = storage.getFilePreview(appwriteConfig.storageId, fileId, 2000, 2000, ImageGravity.Top, 100)
 
     if (!fileUrl) throw Error
 

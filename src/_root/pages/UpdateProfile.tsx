@@ -1,4 +1,4 @@
-import * as z from "zod";
+import type * as z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, useParams } from "react-router-dom";
@@ -45,7 +45,7 @@ const UpdateProfile = () => {
 
   if (!currentUser)
     return (
-      <div className="flex-center w-full h-full">
+      <div className="h-full w-full flex-center">
         <Loader />
       </div>
     );
@@ -63,7 +63,7 @@ const UpdateProfile = () => {
 
     if (!updatedUser) {
       toast({
-        title: `Update user failed. Please try again.`,
+        title: "Update user failed. Please try again.",
       });
     }
 
@@ -79,7 +79,7 @@ const UpdateProfile = () => {
   return (
     <div className="flex flex-1">
       <div className="common-container">
-        <div className="flex-start gap-3 justify-start w-full max-w-5xl">
+        <div className="w-full max-w-5xl flex-start justify-start gap-3">
           <img
             src="/assets/icons/edit.svg"
             width={36}
@@ -87,13 +87,13 @@ const UpdateProfile = () => {
             alt="edit"
             className="invert-white"
           />
-          <h2 className="h3-bold md:h2-bold text-left w-full">Edit Profile</h2>
+          <h2 className="h3-bold md:h2-bold w-full text-left">Edit Profile</h2>
         </div>
 
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleUpdate)}
-            className="flex flex-col gap-7 w-full mt-4 max-w-5xl">
+            className="mt-4 flex w-full max-w-5xl flex-col gap-7">
             <FormField
               control={form.control}
               name="file"
@@ -179,7 +179,7 @@ const UpdateProfile = () => {
               )}
             />
 
-            <div className="flex gap-4 items-center justify-end">
+            <div className="flex items-center justify-end gap-4">
               <Button
                 type="button"
                 className="shad-button_dark_4"

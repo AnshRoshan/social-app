@@ -1,6 +1,6 @@
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-import { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'
+import type { INewPost, INewUser, IUpdatePost, IUpdateUser } from '@/types'
 import {
   createPost,
   createUserAccount,

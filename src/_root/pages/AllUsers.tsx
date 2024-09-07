@@ -17,13 +17,13 @@ const AllUsers = () => {
   return (
     <div className="common-container">
       <div className="user-container">
-        <h2 className="h3-bold md:h2-bold text-left w-full">All Users</h2>
+        <h2 className="h3-bold md:h2-bold w-full text-left">All Users</h2>
         {isLoading && !creators ? (
           <Loader />
         ) : (
           <ul className="user-grid">
             {creators?.documents.map((creator) => (
-              <li key={creator?.$id} className="flex-1 min-w-[200px] w-full  ">
+              <li key={creator?.$id} className="w-full min-w-[200px] flex-1 ">
                 <UserCard user={creator} />
               </li>
             ))}

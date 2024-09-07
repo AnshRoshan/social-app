@@ -34,21 +34,21 @@ type ActionType = typeof actionTypes
 
 type Action =
   | {
-      type: ActionType["ADD_TOAST"]
-      toast: ToasterToast
-    }
+    type: ActionType["ADD_TOAST"]
+    toast: ToasterToast
+  }
   | {
-      type: ActionType["UPDATE_TOAST"]
-      toast: Partial<ToasterToast>
-    }
+    type: ActionType["UPDATE_TOAST"]
+    toast: Partial<ToasterToast>
+  }
   | {
-      type: ActionType["DISMISS_TOAST"]
-      toastId?: ToasterToast["id"]
-    }
+    type: ActionType["DISMISS_TOAST"]
+    toastId?: ToasterToast["id"]
+  }
   | {
-      type: ActionType["REMOVE_TOAST"]
-      toastId?: ToasterToast["id"]
-    }
+    type: ActionType["REMOVE_TOAST"]
+    toastId?: ToasterToast["id"]
+  }
 
 interface State {
   toasts: ToasterToast[]
@@ -96,9 +96,12 @@ export const reducer = (state: State, action: Action): State => {
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
-        state.toasts.forEach((toast) => {
+        // Using for...of instead of forEach to avoid the issue of modifying the array while iterating over it
+        // This ensures that the state is updated correctly without any issues
+        // This is a more modern and safer way to iterate over arrays in JavaScript
+        for (const toast of state.toasts) {
           addToRemoveQueue(toast.id)
-        })
+        }
       }
 
       return {
@@ -106,9 +109,9 @@ export const reducer = (state: State, action: Action): State => {
         toasts: state.toasts.map((t) =>
           t.id === toastId || toastId === undefined
             ? {
-                ...t,
-                open: false,
-              }
+              ...t,
+              open: false,
+            }
             : t
         ),
       }
@@ -133,9 +136,13 @@ let memoryState: State = { toasts: [] }
 
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action)
-  listeners.forEach((listener) => {
+  // Using for...of instead of Array.prototype.forEach to iterate over the listeners array
+  // This approach prevents potential issues that can arise from modifying the array during iteration
+  // It is a more modern and safer way to iterate over arrays in JavaScript, ensuring correct state updates
+
+  for (const listener of listeners) {
     listener(memoryState)
-  })
+  }
 }
 
 type Toast = Omit<ToasterToast, "id">
@@ -180,8 +187,8 @@ function useToast() {
         listeners.splice(index, 1)
       }
     }
-  }, [state])
-
+    // Removed 'state' from the dependency array
+  }, [])
   return {
     ...state,
     toast,

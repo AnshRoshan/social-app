@@ -7,7 +7,7 @@ const LikedPosts = () => {
 
   if (!currentUser)
     return (
-      <div className="flex-center w-full h-full">
+      <div className="h-full w-full flex-center">
         <Loader />
       </div>
     );

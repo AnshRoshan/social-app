@@ -13,7 +13,7 @@ const RootLayout = () => {
           <LeftSidebar />
         </ResizablePanel>
         <ResizableHandle />
-        <ResizablePanel className='flex flex-1 h-full'>
+        <ResizablePanel className="flex h-full flex-1">
           <Outlet />
         </ResizablePanel>
         <Bottombar />

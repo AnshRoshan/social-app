@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Models } from 'appwrite'
+import type { Models } from 'appwrite'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import * as z from 'zod'
+import type * as z from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -73,7 +73,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className='flex flex-col gap-9 w-full max-w-5xl'>
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex w-full max-w-5xl flex-col gap-9">
         <FormField
           control={form.control}
           name='caption'
@@ -130,7 +130,7 @@ const PostForm = ({ post, action }: PostFormProps) => {
           )}
         />
 
-        <div className='flex gap-4 items-center justify-end'>
+        <div className="flex items-center justify-end gap-4">
           <Button type='button' className='shad-button_dark_4' onClick={() => navigate(-1)}>
             Cancel
           </Button>
